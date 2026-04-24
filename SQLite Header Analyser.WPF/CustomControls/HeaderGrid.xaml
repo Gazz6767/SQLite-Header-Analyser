@@ -1,0 +1,288 @@
+﻿<UserControl x:Class="SQLite_Header_Analyser.WPF.CustomControls.HeaderGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:SQLiteHeaderCTRL}"
+             xmlns:local="clr-namespace:SQLite_Header_Analyser.WPF.CustomControls" 
+             xmlns:viewmodels="clr-namespace:SQLite_Header_Analyser.WPF.ViewModels" 
+             xmlns:local1="clr-namespace:SQLite_Header_Analyser.WPF.Services"
+             Background="Transparent"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <local1:DecimalToHexConverter x:Key="BDTH"/>
+    </UserControl.Resources>
+
+    <Grid SnapsToDevicePixels="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="32"/>  
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="32"/>
+            <ColumnDefinition Width="32"/>
+            <ColumnDefinition Width="32"/>
+            <ColumnDefinition Width="32"/>
+            <ColumnDefinition Width="32"/>
+            <ColumnDefinition Width="32"/>
+            <ColumnDefinition Width="32"/>
+            <ColumnDefinition Width="32"/>
+            <ColumnDefinition Width="32"/>
+            <ColumnDefinition Width="32"/>
+            <ColumnDefinition Width="32"/>
+            <ColumnDefinition Width="32"/>
+            <ColumnDefinition Width="32"/>
+            <ColumnDefinition Width="32"/>
+            <ColumnDefinition Width="32"/>
+            <ColumnDefinition Width="32"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Fill in colours for the highlighting of bytes -->
+        <Border Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="16" BorderThickness="2,2,2,0" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteSignatureHeader}"/>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" BorderThickness="2,2,2,0" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLitePageBytesHeader}"/>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="3" BorderThickness="0,2,2,0" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteWriteVerHeader}"/>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="4" BorderThickness="0,2,2,0" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteReadVerHeader}"/>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="5" BorderThickness="0,2,2,0" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteResBytesHeader}"/>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="6" BorderThickness="0,2,2,0" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteMaxPayload}"/>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="7" BorderThickness="0,2,2,0" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteMinPayload}"/>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="8" BorderThickness="0,2,2,0" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteLeafPayload}"/>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="4" BorderThickness="0,2,2,0" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteFileChangeCountHeader}"/>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="13" Grid.ColumnSpan="4" BorderThickness="0,2,2,0" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLitePageCountHeader}"/>
+        </Border>
+
+        <Border Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" BorderThickness="2,2,2,0" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteFreeListTrunkPageStartHeader}"/>
+        </Border>
+
+        <Border Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="4" BorderThickness="0,2,2,0" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteTotalFreelistPages}"/>
+        </Border>
+
+        <Border Grid.Row="3" Grid.Column="9" Grid.ColumnSpan="4" BorderThickness="0,2,2,0" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteSchemaCookie}"/>
+        </Border>
+
+        <Border Grid.Row="3" Grid.Column="13" Grid.ColumnSpan="4" BorderThickness="0,2,2,0" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteSchemaFormatNo}"/>
+        </Border>
+
+        <Border Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4" BorderThickness="2,2,2,0" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteDefaultPageSizeCache}"/>
+        </Border>
+
+        <Border Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="4" BorderThickness="0,2,2,0" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteAutoVacuumHeader}"/>
+        </Border>
+
+        <Border Grid.Row="4" Grid.Column="9" Grid.ColumnSpan="4" BorderThickness="0,2,2,0" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteEncodeMethodHeader}"/>
+        </Border>
+
+        <Border Grid.Row="4" Grid.Column="13" Grid.ColumnSpan="4" BorderThickness="0,2,2,0" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteUserVersion}"/>
+        </Border>
+
+        <Border Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" BorderThickness="2,2,2,2" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteAutoVacuumHeader}"/>
+        </Border>
+
+        <Border Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="12" BorderThickness="0,2,2,0" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteApplicationID}"/>
+        </Border>
+
+        <Border Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="8" BorderThickness="2,0,2,2" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteApplicationID}"/>
+        </Border>
+
+        <Border Grid.Row="6" Grid.Column="9" Grid.ColumnSpan="4" BorderThickness="0,2,2,2" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteReservedExpansion}"/>
+        </Border>
+
+        <Border Grid.Row="6" Grid.Column="13" Grid.ColumnSpan="4" BorderThickness="0,2,2,2" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteVersionValid}"/>
+        </Border>
+
+        <Border Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4" BorderThickness="2,0,2,2" BorderBrush="{DynamicResource SQLiteRecordBorderBrush}">
+            <Grid Background="{DynamicResource SQLiteVersionNo}"/>
+        </Border>
+   
+
+        <!-- Offsets -->
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="0x0000" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}" HorizontalAlignment="Right" Foreground="{DynamicResource SQLiteMarginColour}"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="0x0016" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}" HorizontalAlignment="Right" Foreground="{DynamicResource SQLiteMarginColour}"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="0x0032" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}" HorizontalAlignment="Right" Foreground="{DynamicResource SQLiteMarginColour}"/>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="0x0048" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}" HorizontalAlignment="Right" Foreground="{DynamicResource SQLiteMarginColour}"/>
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="0x0064" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}" HorizontalAlignment="Right" Foreground="{DynamicResource SQLiteMarginColour}"/>
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="0x0080" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}" HorizontalAlignment="Right" Foreground="{DynamicResource SQLiteMarginColour}"/>
+        <TextBlock Grid.Row="7" Grid.Column="0" Text="0x0096" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}" HorizontalAlignment="Right" Foreground="{DynamicResource SQLiteMarginColour}"/>
+
+
+        <!-- Header Row-->
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="0" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}"/>
+        <TextBlock Grid.Row="0" Grid.Column="2" Text="1" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}"/>
+        <TextBlock Grid.Row="0" Grid.Column="3" Text="2" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}"/>
+        <TextBlock Grid.Row="0" Grid.Column="4" Text="3" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}"/>
+        <TextBlock Grid.Row="0" Grid.Column="5" Text="4" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}"/>
+        <TextBlock Grid.Row="0" Grid.Column="6" Text="5" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}"/>
+        <TextBlock Grid.Row="0" Grid.Column="7" Text="6" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}"/>
+        <TextBlock Grid.Row="0" Grid.Column="8" Text="7" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}"/>
+        <TextBlock Grid.Row="0" Grid.Column="9" Text="8" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}"/>
+        <TextBlock Grid.Row="0" Grid.Column="10" Text="9" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}"/>
+        <TextBlock Grid.Row="0" Grid.Column="11" Text="A" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}"/>
+        <TextBlock Grid.Row="0" Grid.Column="12" Text="B" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}"/>
+        <TextBlock Grid.Row="0" Grid.Column="13" Text="C" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}"/>
+        <TextBlock Grid.Row="0" Grid.Column="14" Text="D" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}"/>
+        <TextBlock Grid.Row="0" Grid.Column="15" Text="E" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}"/>
+        <TextBlock Grid.Row="0" Grid.Column="16" Text="F" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Heading}"/>
+        
+        <!-- Row 1 -->
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Data[0], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Data[1], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Data[2], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="1" Grid.Column="4" Text="{Binding Data[3], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="1" Grid.Column="5" Text="{Binding Data[4], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="1" Grid.Column="6" Text="{Binding Data[5], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="1" Grid.Column="7" Text="{Binding Data[6], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="1" Grid.Column="8" Text="{Binding Data[7], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="1" Grid.Column="9" Text="{Binding Data[8], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="1" Grid.Column="10" Text="{Binding Data[9], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="1" Grid.Column="11" Text="{Binding Data[10], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="1" Grid.Column="12" Text="{Binding Data[11], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="1" Grid.Column="13" Text="{Binding Data[12], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="1" Grid.Column="14" Text="{Binding Data[13], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="1" Grid.Column="15" Text="{Binding Data[14], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="1" Grid.Column="16" Text="{Binding Data[15], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <!-- Row 2 -->
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Data[16], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding Data[17], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding Data[18], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="2" Grid.Column="4" Text="{Binding Data[19], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="2" Grid.Column="5" Text="{Binding Data[20], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="2" Grid.Column="6" Text="{Binding Data[21], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="2" Grid.Column="7" Text="{Binding Data[22], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="2" Grid.Column="8" Text="{Binding Data[23], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="2" Grid.Column="9" Text="{Binding Data[24], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="2" Grid.Column="10" Text="{Binding Data[25], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="2" Grid.Column="11" Text="{Binding Data[26], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="2" Grid.Column="12" Text="{Binding Data[27], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="2" Grid.Column="13" Text="{Binding Data[28], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="2" Grid.Column="14" Text="{Binding Data[29], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="2" Grid.Column="15" Text="{Binding Data[30], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="2" Grid.Column="16" Text="{Binding Data[31], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+
+        <!-- Row 3 -->
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Data[32], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding Data[33], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding Data[34], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="3" Grid.Column="4" Text="{Binding Data[35], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="3" Grid.Column="5" Text="{Binding Data[36], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="3" Grid.Column="6" Text="{Binding Data[37], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="3" Grid.Column="7" Text="{Binding Data[38], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="3" Grid.Column="8" Text="{Binding Data[39], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="3" Grid.Column="9" Text="{Binding Data[40], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="3" Grid.Column="10" Text="{Binding Data[41], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="3" Grid.Column="11" Text="{Binding Data[42], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="3" Grid.Column="12" Text="{Binding Data[43], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="3" Grid.Column="13" Text="{Binding Data[44], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="3" Grid.Column="14" Text="{Binding Data[45], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="3" Grid.Column="15" Text="{Binding Data[46], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="3" Grid.Column="16" Text="{Binding Data[47], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+
+        <!-- Row 4 -->
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Data[48], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="4" Grid.Column="2" Text="{Binding Data[49], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="4" Grid.Column="3" Text="{Binding Data[50], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="4" Grid.Column="4" Text="{Binding Data[51], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="4" Grid.Column="5" Text="{Binding Data[52], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="4" Grid.Column="6" Text="{Binding Data[53], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="4" Grid.Column="7" Text="{Binding Data[54], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="4" Grid.Column="8" Text="{Binding Data[55], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="4" Grid.Column="9" Text="{Binding Data[56], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="4" Grid.Column="10" Text="{Binding Data[57], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="4" Grid.Column="11" Text="{Binding Data[58], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="4" Grid.Column="12" Text="{Binding Data[59], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="4" Grid.Column="13" Text="{Binding Data[60], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="4" Grid.Column="14" Text="{Binding Data[61], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="4" Grid.Column="15" Text="{Binding Data[62], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="4" Grid.Column="16" Text="{Binding Data[63], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+
+        <!-- Row 5 -->
+        <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Data[64], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="5" Grid.Column="2" Text="{Binding Data[65], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="5" Grid.Column="3" Text="{Binding Data[66], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="5" Grid.Column="4" Text="{Binding Data[67], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="5" Grid.Column="5" Text="{Binding Data[68], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="5" Grid.Column="6" Text="{Binding Data[69], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="5" Grid.Column="7" Text="{Binding Data[70], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="5" Grid.Column="8" Text="{Binding Data[71], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="5" Grid.Column="9" Text="{Binding Data[72], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="5" Grid.Column="10" Text="{Binding Data[73], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="5" Grid.Column="11" Text="{Binding Data[74], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="5" Grid.Column="12" Text="{Binding Data[75], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="5" Grid.Column="13" Text="{Binding Data[76], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="5" Grid.Column="14" Text="{Binding Data[77], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="5" Grid.Column="15" Text="{Binding Data[78], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="5" Grid.Column="16" Text="{Binding Data[79], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+
+        <!-- Row 6 -->
+        <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding Data[80], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="6" Grid.Column="2" Text="{Binding Data[81], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="6" Grid.Column="3" Text="{Binding Data[82], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="6" Grid.Column="4" Text="{Binding Data[83], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="6" Grid.Column="5" Text="{Binding Data[84], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="6" Grid.Column="6" Text="{Binding Data[85], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="6" Grid.Column="7" Text="{Binding Data[86], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="6" Grid.Column="8" Text="{Binding Data[87], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="6" Grid.Column="9" Text="{Binding Data[88], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="6" Grid.Column="10" Text="{Binding Data[89], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="6" Grid.Column="11" Text="{Binding Data[90], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="6" Grid.Column="12" Text="{Binding Data[91], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="6" Grid.Column="13" Text="{Binding Data[92], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="6" Grid.Column="14" Text="{Binding Data[93], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="6" Grid.Column="15" Text="{Binding Data[94], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="6" Grid.Column="16" Text="{Binding Data[95], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+
+        <!-- Row 7 -->
+        <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding Data[96], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="7" Grid.Column="2" Text="{Binding Data[97], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="7" Grid.Column="3" Text="{Binding Data[98], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+        <TextBlock Grid.Row="7" Grid.Column="4" Text="{Binding Data[99], Converter={StaticResource BDTH}}" Style="{DynamicResource SQLiteHeaderDisplayTextblock_Data}" Foreground="{DynamicResource BytesColorSQLiteHeaderPrimary}"/>
+    </Grid>
+</UserControl>

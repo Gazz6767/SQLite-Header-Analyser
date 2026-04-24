@@ -1,0 +1,853 @@
+﻿<ResourceDictionary x:Name="Light" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit">
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="PrimaryTextColour" Color="#2B2F37"/>
+    <SolidColorBrush x:Key="SecondaryTextColour" Color="GhostWhite"/>
+    <SolidColorBrush x:Key="ButtonFontColor" Color="GhostWhite"/>
+    <SolidColorBrush x:Key="PrimaryBackground" Color="#EEEEEE"/>
+    <SolidColorBrush x:Key="SidebarBackground" Color="#2B2F37"/>
+    <SolidColorBrush x:Key="AccordiansBackground" Color="#3F4551"/>
+    <SolidColorBrush x:Key="NotificationBackground" Color="#5c94af"/>
+    <SolidColorBrush x:Key="NotificationText" Color="White"/>
+    <SolidColorBrush x:Key="FrameBorderColour" Color="#5c94af"/>
+    <SolidColorBrush x:Key="PrimaryButtonColour" Color="#5c94af"/>
+    <SolidColorBrush x:Key="SecondaryButtonColour" Color="#282828"/>
+    <SolidColorBrush x:Key="ComboBoxBackground" Color="White"/>
+
+    <SolidColorBrush x:Key="HoverHightlightColour" Color="Indigo"/>
+    <SolidColorBrush x:Key="AccentColour" Color="#5c94af"/> 
+    <SolidColorBrush x:Key="ListboxBackgroundColour" Color="#EEEEEE"/>
+    <SolidColorBrush x:Key="RichTextboxBackgroundColour" Color="#DDDDDD"/>
+    <SolidColorBrush x:Key="RectangleFill" Color="#114e7c"/>
+    <SolidColorBrush x:Key="TextboxBackgroundColour" Color="#EEEEEE"/>
+
+    <SolidColorBrush x:Key="SQLiteMarginColour" Color="Black"/>
+    <SolidColorBrush x:Key="SQLiteRecordBorderBrush" Color="Black"/>
+    <SolidColorBrush x:Key="BytesColorSQLiteHeaderPrimary" Color="White"/>
+    <SolidColorBrush x:Key="BytesColorSQLiteHeaderSecondary" Color="Black"/>
+    <SolidColorBrush x:Key="SQLiteSignatureHeader" Color="#72A857"/>    
+    <SolidColorBrush x:Key="SQLitePageBytesHeader" Color="SaddleBrown"/>
+    
+    <SolidColorBrush x:Key="SQLiteWriteVerHeader" Color="#7900DD"/>
+    <SolidColorBrush x:Key="SQLiteReadVerHeader" Color="DarkBlue"/>
+    <SolidColorBrush x:Key="SQLiteResBytesHeader" Color="#87956A"/>    
+    <SolidColorBrush x:Key="SQLiteMaxPayload" Color="#B20081"/>
+    <SolidColorBrush x:Key="SQLiteMinPayload" Color="Chocolate"/>
+    
+    <SolidColorBrush x:Key="SQLiteLeafPayload" Color="BurlyWood"/>
+    <SolidColorBrush x:Key="SQLiteFileChangeCountHeader" Color="DarkOrchid"/>    
+    <SolidColorBrush x:Key="SQLitePageCountHeader" Color="DarkSalmon"/>
+    <SolidColorBrush x:Key="SQLiteAutoVacuumHeader" Color="#C61B00"/>
+    <SolidColorBrush x:Key="SQLiteTotalFreelistPages" Color="#884D4B"/>
+
+    <SolidColorBrush x:Key="SQLiteSchemaCookie" Color="#4DB0B2"/>
+    <SolidColorBrush x:Key="SQLiteSchemaFormatNo" Color="#BB9144"/>
+    <SolidColorBrush x:Key="SQLiteDefaultPageSizeCache" Color="#67987f"/>
+    <SolidColorBrush x:Key="SQLiteUserVersion" Color="#0085B6"/>
+    <SolidColorBrush x:Key="SQLiteApplicationID" Color="#7E6BC7"/>
+    
+    <SolidColorBrush x:Key="SQLiteReservedExpansion" Color="#06C671"/>
+    <SolidColorBrush x:Key="SQLiteVersionValid" Color="#6A8770"/>
+    <SolidColorBrush x:Key="SQLiteEncodeMethodHeader" Color="MediumBlue"/>
+    <SolidColorBrush x:Key="SQLiteFreeListTrunkPageStartHeader" Color="#303030"/>
+    <SolidColorBrush x:Key="SQLiteVersionNo" Color="SteelBlue"/>
+
+    <Style TargetType="ProgressBar" x:Key="RoundedProgressBarStyle">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ProgressBar">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="3.5">
+                        <Grid>
+                            <Rectangle x:Name="PART_Track" Fill="{DynamicResource PrimaryBackground}" RadiusX="3.5" RadiusY="3.5"/>
+                            <Rectangle x:Name="PART_Indicator" Fill="{DynamicResource SuccessProcess}" HorizontalAlignment="Left" RadiusX="3.5" RadiusY="3.5" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="ListBoxItem" x:Key="NoHighlightListBoxItemStyle">
+        <Setter Property="Background" Value="{DynamicResource PrimaryBackground}"/>
+        <Setter Property="Margin" Value="0,2"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Transparent"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="Transparent"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="ListBox" x:Key="NoHighlightListBoxStyle">
+        <Setter Property="ItemContainerStyle" Value="{StaticResource NoHighlightListBoxItemStyle}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBox}">
+                    <ScrollViewer x:Name="ScrollViewer" Style="{DynamicResource ListboxThinScrollViewer}">
+                        <ItemsPresenter/>
+                    </ScrollViewer>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Grid Styles -->
+    <Style x:Key="DefaultGrid" TargetType="Grid">
+        <Setter Property="Background" Value="{DynamicResource PrimaryBackground}"/>
+    </Style>
+
+    <Style x:Key="WindowSideMenu" TargetType="Grid">
+        <Setter Property="Background" Value="{DynamicResource SidebarBackground}"/>
+    </Style>
+
+    <Style x:Key="BorderApplicationInfo" TargetType="Border">
+        <Setter Property="CornerRadius" Value="20"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="Background" Value="{DynamicResource SecondaryButtonColour}"/>
+        <Setter Property="BorderThickness" Value="1.5"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="15,0,0,0"/>
+    </Style>
+    
+    
+    <!-- Labels New -->
+    <Style x:Key="AccordianLabel" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Background" Value="{DynamicResource AccordiansBackground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Margin" Value="0,3,0,3"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </Style.Resources>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource AccentColour}"/>
+                <Setter Property="Foreground" Value="{DynamicResource SidebarBackground}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource SidebarBackground}"/>
+                <Setter Property="BorderThickness" Value="1.5"/>
+            </Trigger>
+        </Style.Triggers>
+
+    </Style>
+
+
+
+    <!-- Labels Bold Primary Color (Legacy)-->
+    <Style x:Key="BoldSize10PrimaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="BoldSize11PrimaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="BoldSize12PrimaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="BoldSize14PrimaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="BoldSize16PrimaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+
+    <!-- Labels Regular Primary Color -->
+    <Style x:Key="RegularSize10PrimaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontSize" Value="10"/>
+    </Style>
+
+    <Style x:Key="RegularSize11PrimaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontSize" Value="11"/>
+    </Style>
+
+    <Style x:Key="RegularSize12PrimaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+
+    <Style x:Key="RegularSize14PrimaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <Style x:Key="RegularSize16PrimaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+
+
+    <!-- Labels Italic Bold Primary Color -->
+    <Style x:Key="ItalicSize10PrimaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+        <Setter Property="FontSize" Value="10"/>
+    </Style>
+
+    <Style x:Key="ItalicSize12PrimaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+
+    <Style x:Key="ItalicSize14PrimaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <Style x:Key="ItalicSize16PrimaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+
+
+    <!-- Textblock Regular Primary Color-->
+    <Style x:Key="DefaultTextBlockNoBold_8" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontSize" Value="8"/>
+    </Style>
+
+    <Style x:Key="DefaultTextBlockNoBold_9" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontSize" Value="9"/>
+    </Style>
+
+    <Style x:Key="DefaultTextBlockNoBold_10" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontSize" Value="10"/>
+    </Style>
+
+    <Style x:Key="DefaultTextBlockNoBold_11" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontSize" Value="11"/>
+    </Style>
+
+    <Style x:Key="DefaultTextBlockNoBold_Message" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <Style x:Key="DefaultTextBlockNoBold_14" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <Style x:Key="DefaultTextBlockNoBold_16" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+
+
+    <Style x:Key="SQLiteHeaderDisplayTextblock_Heading" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Foreground" Value="{DynamicResource SQLiteMarginColour}"/>
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="Margin" Value="7,0"/>
+    </Style>
+
+    <Style x:Key="SQLiteHeaderDisplayTextblock_Data" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Foreground" Value="{DynamicResource BytesColorSQLiteHeader}"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="Margin" Value="0,1"/>
+    </Style>
+
+    <!-- Labels Bold Secondary Color -->
+    <Style x:Key="BoldSize10SecondaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="BoldSize11SecondaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="BoldSize12SecondaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="BoldSize14SecondaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="BoldSize16SecondaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+
+    <!-- Labels Regular Secondary Color -->
+    <Style x:Key="RegularSize10SecondaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontSize" Value="10"/>
+    </Style>
+
+    <Style x:Key="RegularSize11SecondaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontSize" Value="11"/>
+    </Style>
+
+    <Style x:Key="RegularSize12SecondaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+
+    <Style x:Key="RegularSize14SecondaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <Style x:Key="RegularSize16SecondaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+
+
+    <!-- Labels Italic Bold Secondary Color -->
+    <Style x:Key="ItalicSize10SecondaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+        <Setter Property="FontSize" Value="10"/>
+    </Style>
+
+    <Style x:Key="ItalicSize12SecondaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+
+    <Style x:Key="ItalicSize14SecondaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <Style x:Key="ItalicSize16SecondaryTextColour" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+
+
+    <!-- Textblock Regular Secondary Color-->
+    <Style x:Key="SecondaryDefaultTextBlockNoBold_8" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontSize" Value="8"/>
+    </Style>
+
+    <Style x:Key="SecondaryDefaultTextBlockNoBold_9" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontSize" Value="9"/>
+    </Style>
+
+    <Style x:Key="SecondaryDefaultTextBlockNoBold_10" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontSize" Value="10"/>
+    </Style>
+
+    <Style x:Key="SecondaryDefaultTextBlockNoBold_11" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontSize" Value="11"/>
+    </Style>
+
+    <Style x:Key="SecondaryDefaultTextBlockNoBold_12" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+
+    <Style x:Key="SecondaryDefaultTextBlockNoBold_14" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <Style x:Key="SecondaryDefaultTextBlockNoBold_16" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+    
+    
+
+
+    <!-- Button Styles -->
+    <Style x:Key="NotificationButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="0,2,0,2"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="bg" Background="{TemplateBinding Background}" BorderBrush="{DynamicResource NotificationBackground}" BorderThickness="0.5" CornerRadius="5">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource AccentColour}" TargetName="bg"/>
+                            <Setter Property="Foreground" Value="{DynamicResource SidebarBackground}"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TopMenuButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="Background" Value="{DynamicResource SidebarBackground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="Height" Value="27"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource SidebarBackground}"/>
+                <Setter Property="BorderThickness" Value="10"/>
+
+            </Style>
+        </Style.Resources>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource AccentColour}"/>
+                <Setter Property="Foreground" Value="{DynamicResource SidebarBackground}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- Toggle button styles -->
+    <Style TargetType="{x:Type ToggleButton}" x:Key="ToggleButtonNoBackground">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColour}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Margin" Value="0,2,0,2"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border x:Name="border" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="Left" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Button.IsDefaulted" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="{DynamicResource AccentColour}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource SidebarBackground}"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{DynamicResource AccentColour}"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Foreground" Value="{DynamicResource SidebarBackground}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" TargetName="border" Value="0.7"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
+    <!-- Rectangle styles -->
+    <Style x:Key="DefaultRectangle" TargetType="Rectangle">
+        <Setter Property="Fill" Value="{DynamicResource RectangleFill}"/>
+        <Setter Property="Opacity" Value="0.3"/>
+    </Style>
+
+    <Style x:Key="DefaultRectangleHorizontal" TargetType="Rectangle">
+        <Setter Property="Fill" Value="{DynamicResource RectangleFill}"/>
+        <Setter Property="Height" Value="3"/>
+        <Setter Property="Opacity" Value="0.5"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+
+    <!-- Context Menu Styles -->
+    <Style x:Key="DefaultContextMenu" TargetType="ContextMenu" BasedOn="{StaticResource {x:Type ContextMenu}}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Grid.IsSharedSizeScope" Value="true" />
+        <Setter Property="HasDropShadow" Value="True" />
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ContextMenu}">
+                    <Border x:Name="Border" Background="{DynamicResource PrimaryBackground}" BorderThickness="2">
+                        <Border.BorderBrush>
+                            <SolidColorBrush Color="{DynamicResource FrameBorderColour}"/>
+                        </Border.BorderBrush>
+                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasDropShadow" Value="true">
+                            <Setter TargetName="Border" Property="Padding" Value="0,0,0,0" />
+                            <Setter TargetName="Border" Property="CornerRadius" Value="3" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!-- Frame Styles -->
+    <Style x:Key="GMPediaFrameStyle" TargetType="Frame">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource FrameBorderColour}"/>
+        <Setter Property="Background" Value="{DynamicResource PrimaryBackground}"/>
+    </Style>
+
+
+    <!-- Listbox Styles -->
+    <Style x:Key="DefaultListBox" TargetType="ListBox" BasedOn="{StaticResource {x:Type ListBox}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="Margin" Value="0,-10,0,-10"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource FrameBorderColour}"/>
+        <Setter Property="BorderThickness" Value="1.5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBox}">
+                    <ScrollViewer x:Name="ScrollViewer" Style="{DynamicResource ListboxThinScrollViewer}">
+                        <ItemsPresenter/>
+                    </ScrollViewer>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </Style.Resources>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BitmapEffect">
+                    <Setter.Value>
+                        <OuterGlowBitmapEffect GlowColor="#FFFB621F" GlowSize="4"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="Black" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+   
+
+
+    <!-- Textbox Styles -->
+    <Style x:Key="DefaultTextBox" TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+        <Setter Property="Background" Value="{DynamicResource TextboxBackgroundColour}"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="Padding" Value="5,0,5,0"/>
+        <Setter Property="SpellCheck.IsEnabled" Value="True"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="BorderThickness" Value="1.2"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="3.5"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style x:Key="ChatBubbleTextBox" TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+        <Setter Property="Background" Value="{DynamicResource TextboxBackgroundColour}"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="Padding" Value="5,0,5,0"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="BorderThickness" Value="1.5"/>
+        <Setter Property="Cursor" Value="IBeam"/>
+        <Setter Property="FontFamily" Value="Segoe UI Emoji"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style x:Key="DefaultPasswordBox" TargetType="PasswordBox" BasedOn="{StaticResource {x:Type PasswordBox}}">
+        <Setter Property="Background" Value="{DynamicResource ListboxBackgroundColour}"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="1.5"/>
+    </Style>
+
+
+    <!-- Document Viewer Styles-->
+    <Style x:Key="DefaultDocumentViewer" TargetType="DocumentViewer" BasedOn="{StaticResource {x:Type DocumentViewer}}">
+        <Setter Property="Background" Value="{DynamicResource ListboxBackgroundColour}"/>
+        <Style.Resources>
+            <!-- Hides the search box-->
+            <Style TargetType="ContentControl">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </Style>
+
+            <!-- Hides the toolbar -->
+            <Style TargetType="ToolBar">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </Style>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="BorderBrush" Value="Black"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+
+    <!-- RichTextBox Styles-->
+    <Style x:Key="DefaultRichTextBox" TargetType="RichTextBox" BasedOn="{StaticResource {x:Type RichTextBox}}">
+        <Setter Property="Background" Value="{DynamicResource RichTextboxBackgroundColour}"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontStretch" Value="Expanded"/>
+        <Setter Property="CaretBrush" Value="Black"/>
+        <Setter Property="Cursor" Value="Arrow"/>
+        <Setter Property="SpellCheck.IsEnabled" Value="True"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="2.5"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="BorderBrush" Value="Black"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <!-- DatePicker Styles -->
+    <Style x:Key="DefaultDatePicker" TargetType="DatePicker" BasedOn="{StaticResource {x:Type DatePicker}}">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="Black"/>
+    </Style>
+
+    <Style x:Key="DefaultDatePickerFly" TargetType="DatePickerTextBox" BasedOn="{StaticResource {x:Type DatePickerTextBox}}">
+        <Setter Property="BorderThickness" Value="10"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryTextColour}"/>
+    </Style>
+
+
+    <!-- Web Browser Styles (IE)-->
+    <Style x:Key="DefaultWebBrowser" TargetType="WebBrowser">
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="2.5"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="BorderBrush" Value="Black"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+
+    <!-- Checkbox Styles -->
+    <Style x:Key="DefaultCheckbox" TargetType="CheckBox" BasedOn="{StaticResource {x:Type CheckBox}}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColour}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" Background="{DynamicResource PrimaryBackground}" BorderThickness="{TemplateBinding BorderThickness}" Width="15" Height="15">
+                            <Path Stretch="Uniform" Width="15" Height="10" Fill="{DynamicResource AccentColour}" Name="eliCheck" Data="F1 M 9.97498,1.22334L 4.6983,9.09834L 4.52164,9.09834L 0,5.19331L 1.27664,3.52165L 4.255,6.08833L 8.33331,1.52588e-005L 9.97498,1.22334 Z " Visibility="Collapsed"/>
+                        </Border>
+                        <TextBlock Margin="5,0,0,0"  VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Content}"></TextBlock>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="eliCheck" Property="Visibility" Value="Visible"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!-- Combobox Styles -->
+    <Style x:Key="DefaultComboBox" TargetType="ComboBox" BasedOn="{StaticResource {x:Type ComboBox}}">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+                        <ToggleButton Grid.Column="2" Focusable="false" IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" >
+                            <ToggleButton.Template>
+                                <ControlTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="25" />
+                                        </Grid.ColumnDefinitions>
+                                        <Border x:Name="Border"  Grid.ColumnSpan="2" CornerRadius="3.5" Background="{DynamicResource ListboxBackgroundColour}" BorderBrush="Black" BorderThickness="1" />
+                                        <Border Grid.Column="0" CornerRadius="5,0,0,5"  Margin="1"  Background="{DynamicResource ComboBoxBackground}" BorderBrush="Black" BorderThickness="0,0,1,0" />
+                                        <Path x:Name="Arrow" Grid.Column="1"  Fill="WhiteSmoke" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="ToggleButton.IsMouseOver" Value="true">
+                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource AccentColour}" />
+                                        </Trigger>
+                                        <Trigger Property="ToggleButton.IsChecked" Value="true">
+                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource AccentColour}" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </ToggleButton.Template>
+                        </ToggleButton>
+                        <ContentPresenter Name="ContentSite" IsHitTestVisible="False"  Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Margin="3"/>
+                        <TextBox x:Name="PART_EditableTextBox" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                        <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True"  Focusable="False" PopupAnimation="Slide">
+                            <Grid  Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="500">
+                                <Border x:Name="DropDownBorder" Background="{DynamicResource ComboBoxBackground}" CornerRadius="3.5"/>
+                                <ScrollViewer SnapsToDevicePixels="True">
+                                    <StackPanel IsItemsHost="True" />
+                                </ScrollViewer>
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+        </Style.Triggers>
+    </Style>
+
+
+   
+
+    <Style x:Key="ListboxThinScrollViewer" TargetType="{x:Type ScrollViewer}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{DynamicResource PrimaryBackground}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Column="0" BorderBrush="{DynamicResource FrameBorderColour}" BorderThickness="0" CornerRadius="2.5" Background="{DynamicResource PrimaryBackground}"/>
+
+                        <ScrollContentPresenter Grid.Column="0"/>
+                        <ScrollBar Grid.Column="1"
+                                  Opacity="1"
+                                  Name="PART_VerticalScrollBar"
+                                  Value="{TemplateBinding VerticalOffset}"
+                                  Maximum="{TemplateBinding ScrollableHeight}"
+                                  ViewportSize="{TemplateBinding ViewportHeight}"
+                                  Width="6"
+                                  Margin="10,2,0,2"
+                                  Background="{DynamicResource PrimaryBackground}"
+                                  MinWidth="5"
+                                  Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"/>
+
+                        <ScrollBar Name="PART_HorizontalScrollBar"
+                               Opacity="1"
+                               Orientation="Horizontal"
+                               Grid.Row="1"
+                               Grid.Column="0"
+                               Height="6"
+                               Background="{DynamicResource PrimaryBackground}"
+                               Value="{TemplateBinding HorizontalOffset}"
+                               Maximum="{TemplateBinding ScrollableWidth}"
+                               ViewportSize="{TemplateBinding ViewportWidth}"
+                               Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

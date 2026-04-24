@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SQLite Header Analyser.Common/SQLite Header Analyser.Common.csproj" />
+  <Project Path="SQLite Header Analyser.WPF/SQLite Header Analyser.WPF.csproj" />
+</Solution>
