@@ -46,7 +46,7 @@ I believe the following are '*must checks*' each time I examine an SQLite databa
 
 * **File Change Counter** - This tells us how many times a '*commit*' has occurred on this database. It is an incremental counter. This is especially useful for scenarios where a database is empty of user data, and you are unsure if the application has been used or not. Be aware that when an application makes a database, it will conduct at least 1 commit to insert a table(s). For example, with Chrome, you may see 3 to 5 commits before the user has begun to add data. The VACUUM processes do not reset this counter (as of 2026/04/27).
 
-* **Page Number of the First Freelist Trunk Page.** - Exactly what it says. It is the page number of the first Freelist page. This is the root page number, which is not the offset. To get the page offset, you must use the calculation ```"(pageSize * PageNumber) - pageSize"```. The first part of this formula provides an offset to the bottom of the SQLite target page. Minus 1 page size just takes us to the top of the page.
+* **Page Number of the First Freelist Trunk Page.** - Exactly what it says. It is the page number of the first Freelist page. This is the root page number, which is not the offset. To get to an overall page offset, you must use the calculation ```"(pageSize * PageNumber) - pageSize"```. The first part of this formula provides an offset to the bottom of the SQLite target page. Minus 1 page size just takes us to the top of the page.
 
 * **Page Number of the Largest Root B-Tree Page** - This tells us if the database has Auto-Vacuum enabled. Offset 64 will then tell us if the database Auto-Vacuum mode is set to 'Incremental', or 'Full'.
 
