@@ -69,7 +69,7 @@ This comes in two (2) modes which work by truncating **Freelist** pages from the
 
 <br>
 
-So how does a page end up in the Freelist?
+### So how does a page end up in the Freelist?
 
 A page is only added to the freelist when it ceases to be a functional member of the B-Tree hierarchy. This usually happens in one of two ways: during a deletion process or during a tree-balancing operation.
 
@@ -78,6 +78,8 @@ A page becomes a candidate for the freelist only when the cell count (the number
 **Row Deletion:** When you execute a DELETE statement, the *Virtual Database Engine* (VDBE) removes the corresponding cell from the page's cell content area and updates the cell pointer array (i.e., the counter). If that deletion causes the record count on the page to hit zero, the page is now empty.
 
 **Tree Rebalancing:** SQLite maintains B-Tree balance. If deleting a record or moving data causes a parent page to have only one child, or causes a leaf page to become empty, the B-Tree logic will perform a "merge" or "rebalance." During this restructuring, pages that are no longer needed are unlinked from the tree and added to the freelist.
+
+<br>
 
 ### Tree rebalancing is a phenomenon whereby common forensic tools may not differentiate between the live and the deleted record. But why?
 
@@ -92,3 +94,5 @@ When a page becomes too sparse or too full, the B-Tree balancer may decide to mo
 * **Freelist Enlistment:** If the move leaves Page $A$ with zero records, the Pager marks Page $A$ as free and adds it to the freelist.
 
 **The Result:** The bits representing record $R$ still reside in the physical storage of the page that was just moved to the freelist. Simultaneously, the identical record $R$ is now "live" on the new page.
+
+This essentially means that even if **AUTO_VACUUM** has been used, there is still an opportunity to recover deleted records, if it has not been moved to the Freelist and truncated. If a user deleted a full set of WhatsApp messages (i.e., a thread), you may find that the VDBE has rebalanced the database which would result in the deletions to be truncated. This points out the value of turning off a device as soon as possible to retain that data (as it typically will happen during standby events where the device / app is not in use).
