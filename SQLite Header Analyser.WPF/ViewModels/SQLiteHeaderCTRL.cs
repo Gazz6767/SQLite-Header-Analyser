@@ -10,7 +10,8 @@ namespace SQLite_Header_Analyser.WPF.ViewModels
         {
             WeakReferenceMessenger.Default.Register<byte[]>(this, (recipient, message) =>
             {
-                data = message;
+                Data = null;
+                Data = message;
             });
         }
 

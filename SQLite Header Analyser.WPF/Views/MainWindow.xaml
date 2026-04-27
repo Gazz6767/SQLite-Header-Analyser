@@ -5,155 +5,159 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SQLite_Header_Analyser.WPF" 
         xmlns:intr="http://schemas.microsoft.com/xaml/behaviors"
-        xmlns:customcontrols="clr-namespace:SQLite_Header_Analyser.WPF.CustomControls" xmlns:viewmodels="clr-namespace:SQLite_Header_Analyser.WPF.ViewModels"
+        xmlns:customcontrols="clr-namespace:SQLite_Header_Analyser.WPF.CustomControls" 
+        xmlns:viewmodels="clr-namespace:SQLite_Header_Analyser.WPF.ViewModels"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=viewmodels:DBHeaderVM}"
         Title="SQLite Header Analyser"
-        WindowState="Maximized"
-        Height="450" 
-        Width="800">
+        WindowState="Maximized">
 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
-        <Menu IsMainMenu="True">
+        <Menu Background="Transparent">
             <MenuItem Header="_File">
                 <MenuItem Header="_Open" Command="{Binding OpenDBCommand}" />
             </MenuItem>
         </Menu>
-        
-        <customcontrols:HeaderGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50,0,20" Opacity="0.75" FocusVisualStyle="{x:Null}"/>
 
-        <CheckBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Show All" HorizontalAlignment="Center" Style="{DynamicResource DefaultCheckbox}" VerticalAlignment="Top" IsChecked="{Binding IsCheckChecked}" FocusVisualStyle="{x:Null}"/>
-        <!-- Start of display values -->
-        <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10" Style="{DynamicResource ListboxThinScrollViewer}" FocusVisualStyle="{x:Null}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Label Grid.Row="0" Grid.Column="0" Content="Signature:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"/>
+        <Grid Grid.Row="0" Grid.Column="0" Margin="0,0,10,0">
+            <customcontrols:HeaderGrid VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50,0,0" Opacity="0.75" FocusVisualStyle="{x:Null}"/>
+        </Grid>
 
-                <Label Grid.Row="0" Grid.Column="1" Content="{Binding Path=HeaderStructure.SignatureReturn}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteSignatureHeader}"/>
+        <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <CheckBox Grid.Row="0" Grid.Column="1" Content="Show All" HorizontalAlignment="Center" Style="{DynamicResource DefaultCheckbox}" VerticalAlignment="Top" IsChecked="{Binding IsCheckChecked}" FocusVisualStyle="{x:Null}"/>
+            <!-- Start of display values -->
+            <ScrollViewer Grid.Row="1" Grid.Column="1" Width="650" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0,10" Style="{DynamicResource ListboxThinScrollViewer}" FocusVisualStyle="{x:Null}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Content="Signature:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"/>
 
-                <Label Grid.Row="1" Grid.Column="0" Content="Page Size:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}" />
+                    <Label Grid.Row="0" Grid.Column="1" Content="{Binding Path=HeaderStructure.SignatureReturn}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteSignatureHeader}"/>
 
-                <Label Grid.Row="1" Grid.Column="1" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLitePageBytesHeader}">
-                    <TextBlock>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Page Size:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}" />
+
+                    <Label Grid.Row="1" Grid.Column="1" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLitePageBytesHeader}">
+                        <TextBlock>
                     <Run Text="{Binding Path=HeaderStructure.PageSizeReturn}"/>
                     <Run Text="bytes per page"/>
-                    </TextBlock>
-                </Label>
+                        </TextBlock>
+                    </Label>
 
-                <Label Grid.Row="2" Grid.Column="0" Content="Write Version:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"/>
+                    <Label Grid.Row="2" Grid.Column="0" Content="Write Version:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"/>
 
-                <Label Grid.Row="2" Grid.Column="1" Content="{Binding Path=HeaderStructure.WriteVerReturn}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteWriteVerHeader}"/>
+                    <Label Grid.Row="2" Grid.Column="1" Content="{Binding Path=HeaderStructure.WriteVerReturn}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteWriteVerHeader}"/>
 
-                <Label Grid.Row="3" Grid.Column="0" Content="Read Version:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"/>
+                    <Label Grid.Row="3" Grid.Column="0" Content="Read Version:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"/>
 
-                <Label Grid.Row="3" Grid.Column="1" Content="{Binding Path=HeaderStructure.ReadVerReturn}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteReadVerHeader}"/>
-                <Label Grid.Row="4" Grid.Column="0" Content="Reserved Bytes:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"/>
+                    <Label Grid.Row="3" Grid.Column="1" Content="{Binding Path=HeaderStructure.ReadVerReturn}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteReadVerHeader}"/>
+                    <Label Grid.Row="4" Grid.Column="0" Content="Reserved Bytes:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"/>
 
-                <Label Grid.Row="4" Grid.Column="1" Content="{Binding Path=HeaderStructure.ReservedBytesReturn}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteResBytesHeader}"/>
+                    <Label Grid.Row="4" Grid.Column="1" Content="{Binding Path=HeaderStructure.ReservedBytesReturn}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteResBytesHeader}"/>
 
-                <Label Grid.Row="5" Grid.Column="0" Content="Maximum Embedded Payload Fraction:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}" Visibility="{Binding AdditionalStatsVisibility}"/>
+                    <Label Grid.Row="5" Grid.Column="0" Content="Maximum Embedded Payload Fraction:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}" Visibility="{Binding AdditionalStatsVisibility}"/>
 
-                <Label Grid.Row="5" Grid.Column="1" Content="{Binding Path=HeaderStructure.MaxEmbedPayloadFract}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteMaxPayload}" Visibility="{Binding AdditionalStatsVisibility}"/>
-                <Label Grid.Row="6" Grid.Column="0" Content="Minimum Embedded Payload Fraction:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}" Visibility="{Binding AdditionalStatsVisibility}"/>
+                    <Label Grid.Row="5" Grid.Column="1" Content="{Binding Path=HeaderStructure.MaxEmbedPayloadFract}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteMaxPayload}" Visibility="{Binding AdditionalStatsVisibility}"/>
+                    <Label Grid.Row="6" Grid.Column="0" Content="Minimum Embedded Payload Fraction:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}" Visibility="{Binding AdditionalStatsVisibility}"/>
 
-                <Label Grid.Row="6" Grid.Column="1" Content="{Binding Path=HeaderStructure.MinEmbedPayloadFract}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteMinPayload}" Visibility="{Binding AdditionalStatsVisibility}"/>
+                    <Label Grid.Row="6" Grid.Column="1" Content="{Binding Path=HeaderStructure.MinEmbedPayloadFract}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteMinPayload}" Visibility="{Binding AdditionalStatsVisibility}"/>
 
-                <Label Grid.Row="7" Grid.Column="0" Content="Leaf Payload Fraction:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}" Visibility="{Binding AdditionalStatsVisibility}"/>
+                    <Label Grid.Row="7" Grid.Column="0" Content="Leaf Payload Fraction:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}" Visibility="{Binding AdditionalStatsVisibility}"/>
 
-                <Label Grid.Row="7" Grid.Column="1" Content="{Binding Path=HeaderStructure.LeafPayloadFract}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteLeafPayload}" Visibility="{Binding AdditionalStatsVisibility}"/>
+                    <Label Grid.Row="7" Grid.Column="1" Content="{Binding Path=HeaderStructure.LeafPayloadFract}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteLeafPayload}" Visibility="{Binding AdditionalStatsVisibility}"/>
 
-                <Label Grid.Row="8" Grid.Column="0" Content="File Change Counter:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"/>
+                    <Label Grid.Row="8" Grid.Column="0" Content="File Change Counter:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"/>
 
-                <Label Grid.Row="8" Grid.Column="1" Content="{Binding Path=HeaderStructure.FileChangeReturn}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteFileChangeCountHeader}"/>
-                <Label Grid.Row="9" Grid.Column="0" Content="Page Count:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"/>
+                    <Label Grid.Row="8" Grid.Column="1" Content="{Binding Path=HeaderStructure.FileChangeReturn}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteFileChangeCountHeader}"/>
+                    <Label Grid.Row="9" Grid.Column="0" Content="Page Count:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"/>
 
-                <Label Grid.Row="9" Grid.Column="1" Content="{Binding Path=HeaderStructure.PageCountReturn}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLitePageCountHeader}"/>
+                    <Label Grid.Row="9" Grid.Column="1" Content="{Binding Path=HeaderStructure.PageCountReturn}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLitePageCountHeader}"/>
 
-                <Label Grid.Row="10" Grid.Column="0" Content="Start of Freelist:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"/>
+                    <Label Grid.Row="10" Grid.Column="0" Content="Start of Freelist:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"/>
 
-                <Label Grid.Row="10" Grid.Column="1" Content="{Binding Path=HeaderStructure.TrunkRootPageReturn}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteFreeListTrunkPageStartHeader}"/>
+                    <Label Grid.Row="10" Grid.Column="1" Content="{Binding Path=HeaderStructure.TrunkRootPageReturn}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteFreeListTrunkPageStartHeader}"/>
 
-                <Label Grid.Row="11" Grid.Column="0" Content="Total Freelist Pages:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"/>
+                    <Label Grid.Row="11" Grid.Column="0" Content="Total Freelist Pages:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"/>
 
-                <Label Grid.Row="11" Grid.Column="1" Content="{Binding Path=HeaderStructure.TotalNoFreelistPages}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteTotalFreelistPages}"/>
+                    <Label Grid.Row="11" Grid.Column="1" Content="{Binding Path=HeaderStructure.TotalNoFreelistPages}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteTotalFreelistPages}"/>
 
-                <Label Grid.Row="12" Grid.Column="0" Content="Schema Cookie:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"  Visibility="{Binding AdditionalStatsVisibility}"/>
+                    <Label Grid.Row="12" Grid.Column="0" Content="Schema Cookie:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"  Visibility="{Binding AdditionalStatsVisibility}"/>
 
-                <Label Grid.Row="12" Grid.Column="1" Content="{Binding Path=HeaderStructure.SchemaCookie}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteSchemaCookie}" Visibility="{Binding AdditionalStatsVisibility}"/>
+                    <Label Grid.Row="12" Grid.Column="1" Content="{Binding Path=HeaderStructure.SchemaCookie}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteSchemaCookie}" Visibility="{Binding AdditionalStatsVisibility}"/>
 
-                <Label Grid.Row="13" Grid.Column="0" Content="Schema Format Number:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}" Visibility="{Binding AdditionalStatsVisibility}"/>
+                    <Label Grid.Row="13" Grid.Column="0" Content="Schema Format Number:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}" Visibility="{Binding AdditionalStatsVisibility}"/>
 
-                <Label Grid.Row="13" Grid.Column="1" Content="{Binding Path=HeaderStructure.SchemaFormatNo}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteSchemaFormatNo}" Visibility="{Binding AdditionalStatsVisibility}"/>
-                <Label Grid.Row="14" Grid.Column="0" Content="Suggested Cache Size:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}" Visibility="{Binding AdditionalStatsVisibility}"/>
+                    <Label Grid.Row="13" Grid.Column="1" Content="{Binding Path=HeaderStructure.SchemaFormatNo}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteSchemaFormatNo}" Visibility="{Binding AdditionalStatsVisibility}"/>
+                    <Label Grid.Row="14" Grid.Column="0" Content="Suggested Cache Size:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}" Visibility="{Binding AdditionalStatsVisibility}"/>
 
-                <Label Grid.Row="14" Grid.Column="1" Content="{Binding Path=HeaderStructure.DefaultPageCacheSize}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteDefaultPageSizeCache}" Visibility="{Binding AdditionalStatsVisibility}"/>
+                    <Label Grid.Row="14" Grid.Column="1" Content="{Binding Path=HeaderStructure.DefaultPageCacheSize}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteDefaultPageSizeCache}" Visibility="{Binding AdditionalStatsVisibility}"/>
 
-                <Label Grid.Row="15" Grid.Column="0" Content="Incremental Vacuum Settings:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"/>
+                    <Label Grid.Row="15" Grid.Column="0" Content="Incremental Vacuum Settings:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"/>
 
-                <Label Grid.Row="15" Grid.Column="1" Content="{Binding Path=HeaderStructure.VacuumReturn}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteAutoVacuumHeader}"/>
+                    <Label Grid.Row="15" Grid.Column="1" Content="{Binding Path=HeaderStructure.VacuumReturn}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteAutoVacuumHeader}"/>
 
-                <Label Grid.Row="16" Grid.Column="0" Content="Encoding Method:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"/>
+                    <Label Grid.Row="16" Grid.Column="0" Content="Encoding Method:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"/>
 
-                <Label Grid.Row="16" Grid.Column="1" Content="{Binding Path=HeaderStructure.EncodingValueReturn}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteEncodeMethodHeader}"/>
-                <Label Grid.Row="17" Grid.Column="0" Content="User Version:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"  Visibility="{Binding AdditionalStatsVisibility}"/>
+                    <Label Grid.Row="16" Grid.Column="1" Content="{Binding Path=HeaderStructure.EncodingValueReturn}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteEncodeMethodHeader}"/>
+                    <Label Grid.Row="17" Grid.Column="0" Content="User Version:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}"  Visibility="{Binding AdditionalStatsVisibility}"/>
 
-                <Label Grid.Row="17" Grid.Column="1" Content="{Binding Path=HeaderStructure.UserVersion}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteUserVersion}" Visibility="{Binding AdditionalStatsVisibility}"/>
+                    <Label Grid.Row="17" Grid.Column="1" Content="{Binding Path=HeaderStructure.UserVersion}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteUserVersion}" Visibility="{Binding AdditionalStatsVisibility}"/>
 
-                <Label Grid.Row="18" Grid.Column="0" Content="Application ID:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}" Visibility="{Binding AdditionalStatsVisibility}"/>
+                    <Label Grid.Row="18" Grid.Column="0" Content="Application ID:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}" Visibility="{Binding AdditionalStatsVisibility}"/>
 
-                <Label Grid.Row="18" Grid.Column="1" Content="{Binding Path=HeaderStructure.AppID}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteApplicationID}" Visibility="{Binding AdditionalStatsVisibility}"/>
+                    <Label Grid.Row="18" Grid.Column="1" Content="{Binding Path=HeaderStructure.AppID}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteApplicationID}" Visibility="{Binding AdditionalStatsVisibility}"/>
 
-                <Label Grid.Row="19" Grid.Column="0" Content="Reserved Expansion:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}" Visibility="{Binding AdditionalStatsVisibility}"/>
+                    <Label Grid.Row="19" Grid.Column="0" Content="Reserved Expansion:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}" Visibility="{Binding AdditionalStatsVisibility}"/>
 
-                <Label Grid.Row="19" Grid.Column="1" Content="{Binding Path=HeaderStructure.ExpansionReserved}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteReservedExpansion}" Visibility="{Binding AdditionalStatsVisibility}"/>
+                    <Label Grid.Row="19" Grid.Column="1" Content="{Binding Path=HeaderStructure.ExpansionReserved}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteReservedExpansion}" Visibility="{Binding AdditionalStatsVisibility}"/>
 
-                <Label Grid.Row="20" Grid.Column="0" Content="Version Valid For:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}" Visibility="{Binding AdditionalStatsVisibility}"/>
+                    <Label Grid.Row="20" Grid.Column="0" Content="Version Valid For:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}" Visibility="{Binding AdditionalStatsVisibility}"/>
 
-                <Label Grid.Row="20" Grid.Column="1" Content="{Binding Path=HeaderStructure.VersionValidFor}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteVersionValid}" Visibility="{Binding AdditionalStatsVisibility}"/>
-                <Label Grid.Row="21" Grid.Column="0" Content="Version:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}" Visibility="{Binding AdditionalStatsVisibility}"/>
+                    <Label Grid.Row="20" Grid.Column="1" Content="{Binding Path=HeaderStructure.VersionValidFor}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteVersionValid}" Visibility="{Binding AdditionalStatsVisibility}"/>
+                    <Label Grid.Row="21" Grid.Column="0" Content="Version:" HorizontalAlignment="Right" Style="{DynamicResource BoldSize16PrimaryTextColour}" Foreground="{DynamicResource BytesColorSQLiteHeaderSecondary}" Visibility="{Binding AdditionalStatsVisibility}"/>
 
-                <Label Grid.Row="21" Grid.Column="1" Content="{Binding Path=HeaderStructure.VersionNoReturn}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteVersionNo}" Visibility="{Binding AdditionalStatsVisibility}"/>
-            </Grid>
-        </ScrollViewer>
+                    <Label Grid.Row="21" Grid.Column="1" Content="{Binding Path=HeaderStructure.VersionNoReturn}" Style="{DynamicResource RegularSize16PrimaryTextColour}" Foreground="{DynamicResource SQLiteVersionNo}" Visibility="{Binding AdditionalStatsVisibility}"/>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+
     </Grid>
 </Window>
