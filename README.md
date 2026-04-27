@@ -65,7 +65,7 @@ This mode pertains to the PRAGMA what rebuilds the database into a new file. It 
 <br>
 
 ### AUTO-VACUUM
-This comes in two (2) modes which work by truncating **Freelist** pages from the database. Truncated pages are lost when the process happens. It is an automated process what occurs when a trigger is satisfied. Our 2 modes are:
+This comes in two (2) modes which work by truncating **Freelist** pages from the database. Truncated pages are lost when the process happens. It is an automated process which occurs when a trigger is satisfied. Our 2 modes are:
 
 * FULL (1): Actively moves pages to truncate the file. This triggers when a **COMMIT** action occurs.
 
@@ -93,7 +93,7 @@ When a page becomes too sparse or too full, the B-Tree balancer may decide to mo
 
 * **The Copy:** The VDBE executes an instruction to move the content of Page $A$ to a new page, Page $B$ (or a new position within the tree). The data for record $R$ is copied into the cell structure of the new page.
 
-* **The Original Deletion:** Because the data has been successfully moved to the "live" location (Page $B$), the engine effectively deletes the record from the original Page $A$ to reclaim space or complete the move. Remember, SQLite by default does not *zero* a record, or the pointer in the cell pointer array. *The PRAGMA **SECURE_DELETE** is used for 'forensically' wiping a record upon deletion (zeroed out), like what we see in Chromium stype databases (which is why we cannot recover deleted web history, contrary to popular belief, and only recover records which are live or in the freelist). For more information - https://www.sqlite.org/pragma.html#pragma_secure_delete*
+* **The Original Deletion:** Because the data has been successfully moved to the "live" location (Page $B$), the engine effectively deletes the record from the original Page $A$ to reclaim space or complete the move. Remember, SQLite by default does not *zero* a record, or the pointer in the cell pointer array. *The PRAGMA **SECURE_DELETE** is used for 'forensically' wiping a record upon deletion (zeroed out), like what we see in Chromium type databases (which is why we cannot recover deleted web history, contrary to popular belief, and only recover records which are live or in the freelist). For more information - https://www.sqlite.org/pragma.html#pragma_secure_delete*
 
 * **Freelist Enlistment:** If the move leaves Page $A$ with zero records, the Pager marks Page $A$ as free and adds it to the freelist.
 
