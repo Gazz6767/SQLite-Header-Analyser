@@ -1,3 +1,5 @@
+This application is a derivitive of the larger project 'SQLite Insights', currently under development.
+
 # What is an SQLite header?
 
 From the documentation (https://sqlite.org/fileformat.html):
@@ -49,6 +51,8 @@ I believe the following are '*must checks*' each time I examine an SQLite databa
 * **Page Number of the Largest Root B-Tree Page** - This tells us if the database has Auto-Vacuum enabled. Offset 64 will then tell us if the database Auto-Vacuum mode is set to 'Incremental', or 'Full'.
 
 Whilst you can use the other fields as and when needed, I believe the above are essential.
+
+**As a final note on pertinent fields:** Common forensic tools are using SQLite frameworks to access SQLite databases. This involves reading the database using a programming library. So what would happen if I were to change offset 19 (the read flag) from a value other than 1 or 2? The forensic application will not read the database, and only carve data from the database. Some forensic tools are better than others at SQLite carving, but major vendors are not carving correctly, resulting in missed data. If you find a database has no live data, but all carved, it is worth manually checking the database for the read flag status. It should be 1 or 2, and match the write flag. 1 = Rollback Journal. 2 = Write-Ahead Log (WAL).
 
 <br>
 
