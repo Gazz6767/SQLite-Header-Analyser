@@ -57,7 +57,7 @@ Whilst you can use the other fields as and when needed, I believe the above are 
 <br>
 
 # Final Note: Vacuuming Types
-This seems to be an area with some amount of misinformation in the field. There are two (2) overarching types of vacuuming: **VACUUM (the pragma) and AUTO-VACUUM**.
+This seems to be an area with some amount of misinformation in the field. There are two (2) overarching types of vacuuming: **VACUUM (the pragma) and AUTO-VACUUM**. I would advise to not fall into this misinformation trap, as there are a few in the industry a lot of us fall for (for example outside of SQLite - yes, you can still do a RAM capture of a laptop even when it has been powered down and get data back from the previous sessions).
 
 ### VACUUM
 This mode pertains to the PRAGMA what rebuilds the database into a new file. It *defragments* the database, rebuilding the B-Tree and removes all non-live data. Any non-live data is lost when the process happens. This can result in a smaller, quicker and better structured database.
