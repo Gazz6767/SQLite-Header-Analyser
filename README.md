@@ -57,7 +57,7 @@ Whilst you can use the other fields as and when needed, I believe the above are 
 <br>
 
 # Final Note: Vacuuming Types
-This seems to be an area with some amount of misinformation in the field. There are two (2) overarching types of vacuuming: **VACUUM (the pragma) and AUTO-VACUUM**. I would advise to not fall into this misinformation trap, as there are a few in the industry a lot of us fall for (for example outside of SQLite - yes, you can still do a RAM capture of a laptop even when it has been powered down and get data back from the previous sessions).
+This seems to be an area with some amount of misinformation in the field. There are two (2) overarching types of vacuuming: **VACUUM (the pragma) and AUTO-VACUUM**. I would advise to not fall into this misinformation trap, as there are a few in the industry a lot of us fall for (for example outside of SQLite - yes, you can still do a RAM capture of a laptop even when it has been powered down and get data back from the previous sessions - Halderman, J. A., et al. (2009). Lest We Remember: Cold Boot Attacks on Encryption Keys. Communications of the ACM).
 
 ### VACUUM
 This mode pertains to the PRAGMA what rebuilds the database into a new file. It *defragments* the database, rebuilding the B-Tree and removes all non-live data. Any non-live data is lost when the process happens. This can result in a smaller, quicker and better structured database.
@@ -93,7 +93,7 @@ When a page becomes too sparse or too full, the B-Tree balancer may decide to mo
 
 * **The Copy:** The VDBE executes an instruction to move the content of Page $A$ to a new page, Page $B$ (or a new position within the tree). The data for record $R$ is copied into the cell structure of the new page.
 
-* **The Original Deletion:** Because the data has been successfully moved to the "live" location (Page $B$), the engine effectively deletes the record from the original Page $A$ to reclaim space or complete the move. Remember, SQLite by default does not *zero* a record, or the pointer in the cell pointer array. *The PRAGMA **SECURE_DELETE** is used for 'forensically' wiping a record upon deletion (zeroed out), like what we see in Chromium stype databases (which is why we cannot recover deleted web history, contrary to popular belief, and only recover records which are live or in the freelist).*
+* **The Original Deletion:** Because the data has been successfully moved to the "live" location (Page $B$), the engine effectively deletes the record from the original Page $A$ to reclaim space or complete the move. Remember, SQLite by default does not *zero* a record, or the pointer in the cell pointer array. *The PRAGMA **SECURE_DELETE** is used for 'forensically' wiping a record upon deletion (zeroed out), like what we see in Chromium stype databases (which is why we cannot recover deleted web history, contrary to popular belief, and only recover records which are live or in the freelist). For more information - https://www.sqlite.org/pragma.html#pragma_secure_delete*
 
 * **Freelist Enlistment:** If the move leaves Page $A$ with zero records, the Pager marks Page $A$ as free and adds it to the freelist.
 
