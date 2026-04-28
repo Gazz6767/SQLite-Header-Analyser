@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Messaging;
-using SQLite_Header_Analyser.WPF.Services;
 
 namespace SQLite_Header_Analyser.WPF.ViewModels
 {

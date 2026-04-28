@@ -3,10 +3,10 @@
                     xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit">
 
     <!-- Brushes -->
-    <SolidColorBrush x:Key="PrimaryTextColour" Color="#2B2F37"/>
+    <SolidColorBrush x:Key="PrimaryTextColour" Color="GhostWhite"/>
     <SolidColorBrush x:Key="SecondaryTextColour" Color="GhostWhite"/>
     <SolidColorBrush x:Key="ButtonFontColor" Color="GhostWhite"/>
-    <SolidColorBrush x:Key="PrimaryBackground" Color="#EEEEEE"/>
+    <SolidColorBrush x:Key="PrimaryBackground" Color="#2b2f37"/>
     <SolidColorBrush x:Key="SidebarBackground" Color="#2B2F37"/>
     <SolidColorBrush x:Key="AccordiansBackground" Color="#3F4551"/>
     <SolidColorBrush x:Key="NotificationBackground" Color="#5c94af"/>
@@ -23,15 +23,15 @@
     <SolidColorBrush x:Key="RectangleFill" Color="#114e7c"/>
     <SolidColorBrush x:Key="TextboxBackgroundColour" Color="#EEEEEE"/>
 
-    <SolidColorBrush x:Key="SQLiteMarginColour" Color="Black"/>
+    <SolidColorBrush x:Key="SQLiteMarginColour" Color="GhostWhite"/>
     <SolidColorBrush x:Key="SQLiteRecordBorderBrush" Color="Black"/>
     <SolidColorBrush x:Key="BytesColorSQLiteHeaderPrimary" Color="White"/>
-    <SolidColorBrush x:Key="BytesColorSQLiteHeaderSecondary" Color="Black"/>
+    <SolidColorBrush x:Key="BytesColorSQLiteHeaderSecondary" Color="GhostWhite"/>
     <SolidColorBrush x:Key="SQLiteSignatureHeader" Color="#72A857"/>    
     <SolidColorBrush x:Key="SQLitePageBytesHeader" Color="SaddleBrown"/>
     
     <SolidColorBrush x:Key="SQLiteWriteVerHeader" Color="#7900DD"/>
-    <SolidColorBrush x:Key="SQLiteReadVerHeader" Color="DarkBlue"/>
+    <SolidColorBrush x:Key="SQLiteReadVerHeader" Color="LightBlue"/>
     <SolidColorBrush x:Key="SQLiteResBytesHeader" Color="#87956A"/>    
     <SolidColorBrush x:Key="SQLiteMaxPayload" Color="#B20081"/>
     <SolidColorBrush x:Key="SQLiteMinPayload" Color="Chocolate"/>
@@ -50,8 +50,8 @@
     
     <SolidColorBrush x:Key="SQLiteReservedExpansion" Color="#06C671"/>
     <SolidColorBrush x:Key="SQLiteVersionValid" Color="#6A8770"/>
-    <SolidColorBrush x:Key="SQLiteEncodeMethodHeader" Color="MediumBlue"/>
-    <SolidColorBrush x:Key="SQLiteFreeListTrunkPageStartHeader" Color="#303030"/>
+    <SolidColorBrush x:Key="SQLiteEncodeMethodHeader" Color="YellowGreen"/>
+    <SolidColorBrush x:Key="SQLiteFreeListTrunkPageStartHeader" Color="#808080"/>
     <SolidColorBrush x:Key="SQLiteVersionNo" Color="SteelBlue"/>
 
     <Style TargetType="ProgressBar" x:Key="RoundedProgressBarStyle">

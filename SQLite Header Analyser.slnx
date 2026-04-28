@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="SQLite Header Analyser.Common/SQLite Header Analyser.Common.csproj" />
+  <Project Path="SQLite Header Analyser.UnitTests/SQLite Header Analyser.UnitTests.csproj" Id="b79e8a3d-037d-4ebd-a0a1-69c4acb2a894" />
   <Project Path="SQLite Header Analyser.WPF/SQLite Header Analyser.WPF.csproj" />
 </Solution>
