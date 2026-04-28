@@ -5,7 +5,7 @@ using System.Text;
 public class HashServiceTests : IDisposable
 {
     private readonly string _testFilePath;
-
+    
     public HashServiceTests()
     {
         _testFilePath = Path.GetTempFileName();
