@@ -1,6 +1,6 @@
 This application is a derivitive of the larger project 'SQLite Insights', currently under development.
 
-![alt text](<Screenshot 2026-04-28 205429.png>)
+<img width="1920" height="1140" alt="Screenshot 2026-04-28 205429" src="https://github.com/user-attachments/assets/9591f7c9-aedf-45b6-acd0-a59b2bf69867" />
 
 # What is an SQLite header?
 
